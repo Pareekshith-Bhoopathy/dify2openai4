@@ -1,21 +1,33 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "app.js",
-        "use": "@vercel/node"
+  "version": 2,
+  "builds": [
+    {
+      "src": "app.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/v1/chat/completions",
+      "dest": "/app.js",
+      "methods": ["POST", "OPTIONS"],
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization",
+        "Access-Control-Allow-Credentials": "true"
       }
-    ],
-    "routes": [
-      {
-        "src": "/v1/chat/completions",
-        "dest": "/app.js",
-        "methods": ["POST"]
-      },
-      {
-        "src": "/",
-        "dest": "/app.js",
-        "methods": ["GET"]
-      }
-    ]
+    },
+    {
+      "src": "/",
+      "dest": "/app.js",
+      "methods": ["GET"]
+    }
+  ],
+  "env": {
+    "DIFY_API_URL": "@dify_api_url",
+    "BOT_TYPE": "@bot_type",
+    "INPUT_VARIABLE": "@input_variable",
+    "OUTPUT_VARIABLE": "@output_variable"
   }
+}
