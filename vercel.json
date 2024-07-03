@@ -23,11 +23,5 @@
       "dest": "/app.js",
       "methods": ["GET"]
     }
-  ],
-  "env": {
-    "DIFY_API_URL": "@DIFY_API_URL",
-    "BOT_TYPE": "@bot_type",
-    "INPUT_VARIABLE": "@input_variable",
-    "OUTPUT_VARIABLE": "@output_variable"
-  }
+  ]
 }
